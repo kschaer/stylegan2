@@ -33,7 +33,7 @@ _valid_configs = [
 
 #----------------------------------------------------------------------------
 
-def run(dataset, data_dir, result_dir, config_id, num_gpus, total_kimg, gamma, mirror_augment, mirror_augment_v, metrics, min_h, min_w, res_log2, lr, use_attention, resume_with_new_nets, glr, dlr, use_raw, image_snapshot_ticks, network_snapshot_ticks):
+def run(dataset, data_dir, result_dir, config_id, num_gpus, total_kimg, gamma, mirror_augment, mirror_augment_v, metrics, min_h, min_w, res_log2, lr, use_attention, resume_with_new_nets, glr, dlr, use_raw, image_snapshot_ticks, network_snapshot_ticks, resume_pkl):
     train     = EasyDict(run_func_name='training.training_loop.training_loop') # Options for training loop.
     G         = EasyDict(func_name='training.networks_stylegan2.G_main')       # Options for generator network.
     D         = EasyDict(func_name='training.networks_stylegan2.D_stylegan2')  # Options for discriminator network.
@@ -53,6 +53,7 @@ def run(dataset, data_dir, result_dir, config_id, num_gpus, total_kimg, gamma, m
     train.resume_with_new_nets = resume_with_new_nets
     train.image_snapshot_ticks = image_snapshot_ticks
     train.network_snapshot_ticks = network_snapshot_ticks
+    train.resume_pkl = resume_pkl
     sched.G_lrate_base = sched.D_lrate_base = lr
     
     if glr:
@@ -196,6 +197,7 @@ def main():
     parser.add_argument('--resume_with_new_nets', help='Experimental: Copy from checkpoint instead of direct load, useful for network structure modification (default: %(default)s)', default=False, metavar='BOOL', type=_str_to_bool)
     parser.add_argument('--image_snapshot_ticks', help='How often to save an image snapshot.', default=1, type=int, metavar='N')
     parser.add_argument('--network_snapshot_ticks', help='How often to save a network snapshot.', default=4, type=int, metavar='N')
+    parser.add_argument('--resume_pkl', help='Set the path to the desired pkl to resume training from, or find the latest pkl.', default='latest')
 
     
     args = parser.parse_args()
