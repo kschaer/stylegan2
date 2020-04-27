@@ -1,4 +1,9 @@
 ## Changes from skyflynil fork:
+
+* Added `--resume_pkl` option to explicitly set the pkl file to resume training from. Defaults to `'latest'`, but should otherwise be the path to your desired pkl file:
+```
+!python run_training.py --num-gpus=1 --data-dir=./dataset --config=config-f --dataset=your_dataset_name --metric=none --min-h=4 --min-w=4 --res-log2=8 --resume_pkl=results/00000-pretrained/network-snapshot-10000.pkl
+```
 * Added image and network snapshot frequencies as explicit args, with defaults:
 ```
 --image_snapshot_frequency=1
