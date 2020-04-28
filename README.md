@@ -6,13 +6,13 @@
 ```
 * Added image and network snapshot frequencies as explicit args, with defaults:
 ```
---image_snapshot_frequency=1
---network_snapshot_frequency=4
+--image_snapshot_ticks=1
+--network_snapshot_ticks=4
 ```
 
 Use these with `run_training.py` - for ex, to save an image and network snapshot every tick:
 ```
-!python run_training.py --num-gpus=1 --data-dir=./dataset --config=config-f --dataset=your_dataset_name --mirror-augment=true --metric=none --total-kimg=20000 --min-h=5 --min-w=3 --res-log2=7 --image_snapshot_frequency=1 --network_snapshot_frequency=1
+!python run_training.py --num-gpus=1 --data-dir=./dataset --config=config-f --dataset=your_dataset_name --mirror-augment=true --metric=none --total-kimg=20000 --min-h=5 --min-w=3 --res-log2=7 --image_snapshot_ticks=1 --network_snapshot_ticks=1
 ```
 
 ## Original skyflynil README
