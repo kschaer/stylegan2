@@ -104,7 +104,7 @@ def training_schedule(
         s.D_lrate *= rampup
 
     # Other parameters.
-    s.tick_kimg = 6 #tick_kimg_dict.get(s.resolution, tick_kimg_base)
+    s.tick_kimg = 2 #tick_kimg_dict.get(s.resolution, tick_kimg_base)
     return s
 
 #----------------------------------------------------------------------------
